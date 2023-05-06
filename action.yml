@@ -1,0 +1,10 @@
+name: 'Activate Hermit'
+description: 'Activate a Hermit environment'
+inputs:
+  working-directory:
+    description: 'The directory with the Hermit environment (contains `bin/hermit`)'
+    required: false
+    default: './'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
