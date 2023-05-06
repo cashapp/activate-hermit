@@ -1,0 +1,16 @@
+name: build
+on: push
+
+jobs:
+  dist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: bin/hermit info node --json | jq -r '.[0].Reference.Channel' > .node-version
+      - uses: actions/setup-node@v3
+        with:
+          cache: npm
+          node-version-file: .node-version
+
+      - run: npm clean-install
