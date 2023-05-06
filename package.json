@@ -1,6 +1,6 @@
 {
   "name": "activate-hermit",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Github Action to activate a Hermit environment",
   "author": "Scott Robinson <ssr@squareup.com>",
   "license": "Apache-2",
