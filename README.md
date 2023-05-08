@@ -11,7 +11,7 @@ See [action.yml](action.yml) for the ground truth.
 ```yaml
 steps:
   - uses: actions/checkout@v3
-  - uses: squareup/activate-hermit@v1
+  - uses: cashapp/activate-hermit@v1
 ```
 
 ### Hard mode: activate Hermit in a sub-directory
@@ -20,7 +20,7 @@ steps:
 steps:
   - uses: actions/checkout@v3
   - name: Activate hermit
-    uses: squareup/activate-hermit@v1
+    uses: cashapp/activate-hermit@v1
     with:
       working-directory: subproject-a
 ```
