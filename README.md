@@ -19,8 +19,7 @@ steps:
 ```yaml
 steps:
   - uses: actions/checkout@v3
-  - name: Activate hermit
-    uses: cashapp/activate-hermit@v1
+  - uses: cashapp/activate-hermit@v1
     with:
       working-directory: subproject-a
 ```
