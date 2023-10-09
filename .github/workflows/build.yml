@@ -26,7 +26,7 @@ jobs:
       - run: npm clean-install
 
       - if: github.ref == 'refs/heads/main'
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: update `dist`
           file_pattern: dist/
