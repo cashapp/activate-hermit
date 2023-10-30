@@ -18,7 +18,7 @@ jobs:
           ref: ${{ github.head_ref }}
 
       - run: bin/hermit info node --json | jq -r '.[0].Reference.Channel' > .node-version
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           cache: npm
           node-version-file: .node-version
