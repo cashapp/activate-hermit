@@ -5,6 +5,25 @@ inputs:
     description: 'The directory with the Hermit environment (contains `bin/hermit`)'
     required: false
     default: './'
+  cache:
+    description: 'If "true", installed Hermit packages will be cached.'
+    required: false
+    default: 'false'
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: composite
+  steps:
+    - if: ${{ inputs.cache == 'true' }}
+      uses: theowenyoung/folder-hash@v3
+      id: bin-hash
+      with:
+        path: ./${{ inputs.working-directory }}/bin
+    - if: ${{ inputs.cache == 'true' }}
+      uses: actions/cache@v3
+      with:
+        path: ${{ runner.os == 'macOS' && '~/Library/Caches/hermit/pkg' || '~/.cache/hermit/pkg' }}
+        key: ${{ runner.os }}-hermit-cache-${{ steps.bin-hash.outputs.hash }}
+        restore-keys: |
+          ${{ runner.os }}-hermit-cache-
+    - shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      run: ./bin/hermit env --raw >> "$GITHUB_ENV"
