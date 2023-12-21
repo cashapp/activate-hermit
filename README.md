@@ -24,6 +24,18 @@ steps:
       working-directory: subproject-a
 ```
 
+### Enable caching of extracted packages
+
+This can signficantly speed up builds.
+
+```yaml
+steps:
+  - uses: actions/checkout@v3
+  - uses: cashapp/activate-hermit@v1
+    with:
+      cache: "true"
+```
+
 # License
 
 Copyright © 2023 Block, Inc.
