@@ -13,8 +13,10 @@ runs:
   using: composite
   steps:
     - if: ${{ inputs.cache == 'true' }}
-      uses: theowenyoung/folder-hash@v3
       id: bin-hash
+      run: |
+        hash="$(find ./${{ inputs.working-directory }}/bin ! -type d | sort | xargs openssl sha256 | openssl sha256 -r | cut -d' ' -f1)"
+        echo "hash=$hash" >> "$GITHUB_OUTPUT"
       with:
         path: ./${{ inputs.working-directory }}/bin
     - if: ${{ inputs.cache == 'true' }}
