@@ -26,7 +26,7 @@ steps:
 
 ### Enable caching of extracted packages
 
-This can signficantly speed up builds.
+This can significantly speed up builds.
 
 ```yaml
 steps:
